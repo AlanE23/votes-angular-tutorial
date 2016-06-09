@@ -1,0 +1,22 @@
+{
+  "name": "votes-angular-tutorial",
+  "homepage": "https://github.com/AlanE23/votes-angular-tutorial",
+  "authors": [
+    "Alan Eatherly <eatherlyae@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "firebase": "^3.0.4"
+  }
+}
