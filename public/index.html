@@ -7,9 +7,38 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Testing 123</h1>
 
-  <script src="public/lib/angular/angular.min.js"></script>
-  <script src="public/lib/firebase/firebase.js"></script>
+  <div ng-app="app">
+    <div ng-controller="MainCtrl as main">
+      <h1>{{main.heading}}</h1>
+
+      <input type="text" name="">
+
+      <!-- <div “ng-repeat=“(id, person) in main.votes | toArray:true | orderBy:’count:true”>
+      </div> -->
+
+      <h3>{{main.second}}</h3>
+    </div>
+  </div>
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/firebase/firebase.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
+
+<!--
+  <div ng-app="app">
+    <div ng-controller="MainCtrl as main">
+      <h1>{{main.heading}}</h1>
+      <div>
+        <button ng-click="main.curry()">Curry</button>{{main.curryCount}}
+      </div>
+      <div>
+        <button ng-click="main.bron()">BronBron</button>{{main.bronCount}}
+      </div>
+    </div>
+  </div>
+  <script src="lib/firebase/firebase.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="main.js"></script> -->
