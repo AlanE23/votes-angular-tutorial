@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,16 +13,26 @@
     <div ng-controller="MainCtrl as main">
       <h1>{{main.heading}}</h1>
 
-      <input type="text" name="">
+      <form ng-submit="main.nominate(main.nomination)">
+        <input type="text" ng-model="main.nomination">
+        <button type="submit">Add Stuff to Vote Upon</button>
+      </form>
 
-      <!-- <div “ng-repeat=“(id, person) in main.votes | toArray:true | orderBy:’count:true”>
-      </div> -->
+      <div class="candidates" ng-repeat="votes in main.data | toArray:true | orderBy: '-count'">
+        <button type="click" ng-click="main.vote(votes.$key)">{{votes.name}}</button>{{votes.count}}
+        <button type="click" ng-click="main.delete(votes.$key)">Delete</button>
+      </div>
 
-      <h3>{{main.second}}</h3>
+      <h6>{{main.second}}</h6>
     </div>
   </div>
 
+  <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="lib/angular-route/angular-route.min.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="lib/firebase/firebase.js"></script>
   <script src="main.js"></script>
 </body>

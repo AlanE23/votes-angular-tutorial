@@ -1,4 +1,4 @@
-const app = angular.module('app', [])
+const app = angular.module('app', ['angular.filter'])
 
   .config(() => {
     firebase.initializeApp({
@@ -9,16 +9,35 @@ const app = angular.module('app', [])
     });
   })
 
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $timeout) {
     const main = this;
-    // const key = $routeParams.key;
 
     main.heading = "Vote on stuff*";
 
     main.second = "*your vote is actually worthless";
 
-    firebase.database().ref("votes/").on('value', function(argument) {
-      console.log("votes", argument);
+    main.vote = function (id) {
+      return firebase.database().ref(`/votes/${id}`)
+        .transaction(current => {
+          current.count += 1;
+          return current;
+        })
+    }
+
+    main.nominate = function (name) {
+      firebase.database().ref('/votes')
+        .push({name: name, count: 0})
+        .then(() => main.nomination = '');
+    }
+
+    main.delete = function(id) {
+      return firebase.database().ref(`vottes/${id}`)
+        .set(null)
+    }
+
+    firebase.database().ref('/votes').on('value', (arg) => {
+      main.data = arg.val();
+      $timeout();
     })
 
 
